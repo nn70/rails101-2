@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
   def destroy
 
     @group.destroy
-    flash[:alert] = "Group deleted"
+    flash[:alert] = "已刪除本片"
     redirect_to groups_path
   end
 
@@ -50,9 +50,9 @@ class GroupsController < ApplicationController
 
     if !current_user.is_member_of?(@group)
       current_user.join!(@group)
-      flash[:notice] = "加入成功"
+      flash[:notice] = "收藏成功"
     else
-      flash[:warning] = "已經是成員"
+      flash[:warning] = "已經收藏了"
     end
 
     redirect_to group_path(@group)
@@ -62,9 +62,9 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     if current_user.is_member_of?(@group)
       current_user.quit!(@group)
-      flash[:alert] = "已退"
+      flash[:alert] = "已解除收藏"
     else
-      flash[:warning] ="不能退"
+      flash[:warning] ="不能退出"
     end
 
     redirect_to group_path(@group)
@@ -72,7 +72,7 @@ class GroupsController < ApplicationController
 
 private
   def find_group_and_check_permission
-    @group = Group.find(prams[:id])
+    @group = Group.find(params[:id])
     if current_user != @group.user
       redirect_to root_path, alert: "no permission"
     end

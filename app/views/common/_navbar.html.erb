@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-          <a class="navbar-brand" href="/">Rails 101</a>
+          <a class="navbar-brand" href="/">ＸＤ電影評論網</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -15,12 +15,12 @@
           <% else %>
            <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Hi!, <%= current_user.email %>
+              歡迎你,影評人 <%= current_user.email %>
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li> <%= link_to("My Groups", account_groups_path) %></li>
-              <li> <%= link_to("My Posts", account_posts_path) %></li>
+              <li> <%= link_to("我收藏的電影", account_groups_path) %></li>
+              <li> <%= link_to("我的評論", account_posts_path) %></li>
               <li class="divider"></li>
               <li> <%= link_to("退出", destroy_user_session_path, method: :delete) %> </li>
             </ul>

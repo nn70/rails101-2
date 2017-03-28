@@ -3,19 +3,19 @@
 
     <span class="pull-right">
       <% if current_user && current_user.is_member_of?(@group) %>
-      <label class="label label-success"> 群組成員 </label>
-        <%= link_to("Quit Group", quit_group_path(@group), method: :post, class: "btn btn-default") %>
+       <label class="label label-success"> 已收藏本電影 </label>
+        <%= link_to("解除收藏", quit_group_path(@group), method: :post, class: "btn btn-default") %>
 
       <% else %>
-      <label class="label label-warning" 不是群組成員 </label>
-        <%= link_to("Join Group", join_group_path(@group), method: :post, class: "btn btn-default") %>
+       <label class="label label-warning"> 尚未收藏本電影 </label>
+        <%= link_to("加入收藏", join_group_path(@group), method: :post, class: "btn btn-default") %>
       <% end %>
     </span>
 
-    <%= link_to("write a post", new_group_post_path(@group), class: "btn btn-default pull-right")%>
+    <%= link_to("評論本電影", new_group_post_path(@group), class: "btn btn-default pull-right")%>
 
     <% if current_user && current_user == @group.user %>
-     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
+     <%= link_to("編輯內容", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
   <h2><%= @group.title %></h2>
@@ -24,7 +24,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th>文章內容</th>
+        <th>評論內容</th>
         <th>發表者</th>
         <th>發表時間</th>
       </tr>
